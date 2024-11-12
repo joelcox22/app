@@ -1,0 +1,78 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@std/yaml@1": "1.0.5",
+    "npm:@types/node@*": "22.5.4",
+    "npm:commander@^12.1.0": "12.1.0",
+    "npm:cron@3": "3.1.9",
+    "npm:debug@4": "4.3.7",
+    "npm:zx@8": "8.2.1"
+  },
+  "jsr": {
+    "@std/yaml@1.0.5": {
+      "integrity": "71ba3d334305ee2149391931508b2c293a8490f94a337eef3a09cade1a2a2742"
+    }
+  },
+  "npm": {
+    "@types/fs-extra@11.0.4": {
+      "integrity": "sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==",
+      "dependencies": [
+        "@types/jsonfile",
+        "@types/node"
+      ]
+    },
+    "@types/jsonfile@6.1.4": {
+      "integrity": "sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==",
+      "dependencies": [
+        "@types/node"
+      ]
+    },
+    "@types/luxon@3.4.2": {
+      "integrity": "sha512-TifLZlFudklWlMBfhubvgqTXRzLDI5pCbGa4P8a3wPyUQSW+1xQ5eDsreP9DWHX3tjq1ke96uYG/nwundroWcA=="
+    },
+    "@types/node@22.5.4": {
+      "integrity": "sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==",
+      "dependencies": [
+        "undici-types"
+      ]
+    },
+    "commander@12.1.0": {
+      "integrity": "sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA=="
+    },
+    "cron@3.1.9": {
+      "integrity": "sha512-eNZu+YhLRHLxNJNqZgYuy8mXhzMV0XXmOSh+Ls2j1yTeQLCQ04ya7oNpujxwl4lEyck1fcVa1aRVZ+T4tAC7SA==",
+      "dependencies": [
+        "@types/luxon",
+        "luxon"
+      ]
+    },
+    "debug@4.3.7": {
+      "integrity": "sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==",
+      "dependencies": [
+        "ms"
+      ]
+    },
+    "luxon@3.5.0": {
+      "integrity": "sha512-rh+Zjr6DNfUYR3bPwJEnuwDdqMbxZW7LOQfUN4B54+Cl+0o5zaU9RJ6bcidfDtC1cWCZXQ+nvX8bf6bAji37QQ=="
+    },
+    "ms@2.1.3": {
+      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
+    },
+    "undici-types@6.19.8": {
+      "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    },
+    "zx@8.2.1": {
+      "integrity": "sha512-E3TZRg76QC14RXU8LLKGCnsd8omfM220TJKU4O4R1YuitE4IzDB3cmX6+tF2iffJ8JtlWxBo35YS1TCmpINuaQ==",
+      "dependencies": [
+        "@types/fs-extra",
+        "@types/node"
+      ]
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:commander@^12.1.0",
+      "npm:debug@4"
+    ]
+  }
+}
