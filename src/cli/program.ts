@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --unstable --allow-read --allow-write --allow-net --allow-env
+#!/usr/bin/env -S deno run --allow-all
 
 import { Command } from 'commander';
 import { prep } from './prep.ts';

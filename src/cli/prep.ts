@@ -13,6 +13,6 @@ prep.addArgument(util.entrypointArgument);
 prep.action(async (entrypoint) => {
   const app = await util.loadApp(entrypoint);
   buildHelmChart(app, '');
-  buildDockerfile(app);
+  buildDockerfile();
   await buildDist(entrypoint);
 });
