@@ -5,7 +5,7 @@
   "license": "MIT",
   "exports": {
     ".": "./mod.ts",
-    "./app": "./src/cli/program.ts"
+    "./cli": "./src/cli/program.ts"
   },
   "imports": {
     "app": "./mod.ts",

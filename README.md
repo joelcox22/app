@@ -21,7 +21,7 @@ app.register('cron', cron);
 Then run the prepare step
 
 ```bash
-npm run prep examples.ts
+deno run --allow-all jsr:@joelcox22/app/cli prep example.ts
 ```
 
 This will generate
@@ -43,6 +43,17 @@ Basically this is just a POC to show what a good dev experience should start wit
 with some well handy gaps in what's in scope based on some stuff I'm doing at work where
 we're missing scope and plans to do these things.
 
+## Recommended deno.json tasks / package.json scripts
+
+```json deno.json
+{
+  "tasks": {
+    "prep": "deno run --allow-all jsr:@joelcox22/app/cli prep <your entrypoint>",
+    "start": "deno run --allow-all jsr:@joelcox22/app/cli start <your entrypoint>"
+  }
+}
+```
+
 ## Other features planned
 
 - Simple http methods
@@ -61,3 +72,14 @@ translates to the kubernetes resources to support what you're trying to do.
 This same pattern could easily be extended to prepare a AWS CDK application and
 to translate the features into relevant CDK constructs, however for simplicity
 of this POC, at this stage I'm only focusing on Kubernetes.
+
+## Why Deno and JSR?
+
+Deno2 + JSR is awesome, and I think it's the future of the javascript ecosystem.
+
+Everything I've setup here that relies on deno or JSR can be done with plain node/npm,
+it'd just be a bit harder than it is with deno.
+
+This is just a POC - future work in this space could commit to deno, or commit to
+avoiding using deno and tools like esbuild instead of deno compile, and still be
+entirely feasible.
