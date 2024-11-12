@@ -1,6 +1,6 @@
 {
   "name": "@joelcox22/app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "WIP - a simple kubernetes app framework. Not recommended for anyone to use at this point.",
   "license": "MIT",
   "exports": {
