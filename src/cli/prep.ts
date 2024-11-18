@@ -1,8 +1,7 @@
 import { Command } from 'commander';
 import * as util from './util.ts';
-import { buildHelmChart } from "./build/chart.ts";
-import { buildDockerfile } from "./build/dockerfile.ts";
-import { buildDist } from './build/dist.ts';
+import { buildHelmChart } from "./prep/chart.ts";
+import { buildDist } from './prep/dist.ts';
 
 export const prep = new Command('prep');
 
@@ -12,7 +11,6 @@ prep.addArgument(util.entrypointArgument);
 
 prep.action(async (entrypoint) => {
   const app = await util.loadApp(entrypoint);
-  buildHelmChart(app, '');
-  buildDockerfile();
-  await buildDist(entrypoint);
+  const image = await buildDist(entrypoint, app);
+  await buildHelmChart(app, image);
 });

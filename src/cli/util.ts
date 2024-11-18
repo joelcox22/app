@@ -3,6 +3,9 @@ import * as fs from 'node:fs';
 import * as process from 'node:process';
 import * as path from 'node:path';
 import { App } from '../app.ts';
+import { customAlphabet } from "nanoid";
+
+export { getGithubToken } from '../util/github.ts';
 
 export const entrypointArgument = new Argument("<entrypoint>", "entrypoint file");
 
@@ -17,3 +20,5 @@ export async function loadApp(entrypoint: string): Promise<App> {
   }
   return app;
 }
+
+export const nanoid = customAlphabet('1234567890abcdef', 10);

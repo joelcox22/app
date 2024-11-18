@@ -1,8 +1,8 @@
-import * as fs from 'node:fs';
+import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
+import { stringify } from 'jsr:@std/yaml@1';
 import type { App } from '../../app.ts';
 import { Cron } from '../../cron.ts';
-import { stringify } from 'jsr:@std/yaml@^1';
 
 // https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
 const cronTemplate = (id: string) => `
@@ -31,7 +31,7 @@ spec:
 {{ end }}
 `;
 
-export function buildHelmChart(app: App, image: string) {
+export async function buildHelmChart(app: App, image: string) {
   const values: Record<string, any> = {
     image,
     imagePullPolicy: 'ifNotPresent',
@@ -39,18 +39,18 @@ export function buildHelmChart(app: App, image: string) {
     appVersion: app.version,
   };
 
-  fs.rmSync('chart', { recursive: true, force: true });
-  fs.mkdirSync(path.join('chart', 'templates'), { recursive: true });
-  fs.writeFileSync(path.join('chart', 'Chart.yaml'), stringify({
+  await fs.rm('chart', { recursive: true, force: true });
+  await fs.mkdir(path.join('chart', 'templates'), { recursive: true });
+  await fs.writeFile(path.join('chart', 'Chart.yaml'), stringify({
     apiVersion: 'v2',
-    name: app.name,
+    name: app.name.replace(/^@[^/]+\//, ''),
     version: app.version,
   }));
 
   const features = Object.entries(app.features);
   for (const [id, feature] of features) {
     if (feature instanceof Cron) {
-      fs.writeFileSync(path.join('chart', 'templates', `${id}.yaml`), cronTemplate(id));
+      await fs.writeFile(path.join('chart', 'templates', `${id}.yaml`), cronTemplate(id));
       values[id] = {
         enabled: true,
         schedule: feature.schedule,
@@ -58,5 +58,5 @@ export function buildHelmChart(app: App, image: string) {
     }
   }
 
-  fs.writeFileSync(path.join('chart', 'values.yaml'), stringify(values));
+  await fs.writeFile(path.join('chart', 'values.yaml'), stringify(values));
 }

@@ -5,15 +5,19 @@
   "license": "MIT",
   "exports": {
     ".": "./mod.ts",
-    "./cli": "./src/cli/program.ts"
+    "./cli": "./src/cli/index.ts"
+  },
+  "tasks": {
+    "start": "deno --watch --allow-read --allow-env src/cli/index.ts start",
+    "prep": "deno --allow-all src/cli/index.ts prep",
+    "build": "deno --allow-all src/cli/index.ts build",
+    "deploy": "deno --allow-all src/cli/index.ts deploy"
   },
   "imports": {
     "app": "./mod.ts",
-    "commander": "npm:commander@^12.1.0",
-    "debug": "npm:debug@^4"
-  },
-  "tasks": {
-    "start": "deno --watch --allow-read --allow-env src/cli/program.ts start",
-    "prep": "deno --allow-all src/cli/program.ts prep"
+    "commander": "npm:commander@12",
+    "debug": "npm:debug@4",
+    "zx": "npm:zx@8",
+    "nanoid": "npm:nanoid@5"
   }
 }

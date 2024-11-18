@@ -32,6 +32,8 @@ export class App {
       this.name = JSON.parse(fs.readFileSync('package.json', 'utf8')).name;
     } else if (fs.existsSync('deno.json')) {
       this.name = JSON.parse(fs.readFileSync('deno.json', 'utf8')).name;
+    } else if (fs.existsSync('app.json')) {
+      this.name = JSON.parse(fs.readFileSync('app.json', 'utf8')).name;
     } else if (process.env.APP_NAME) {
       this.name = process.env.APP_NAME;
     }
@@ -41,14 +43,16 @@ export class App {
       this.version = JSON.parse(fs.readFileSync('package.json', 'utf8')).version;
     } else if (fs.existsSync('deno.json')) {
       this.version = JSON.parse(fs.readFileSync('deno.json', 'utf8')).version;
+    } else if (fs.existsSync('app.json')) {
+      this.version = JSON.parse(fs.readFileSync('app.json', 'utf8')).version;
     } else if (process.env.APP_VERSION) {
       this.version = process.env.APP_VERSION;
     }
     if (this.name === '') {
-      throw new Error('Unable to app name from package.json or deno.json, and it was not provided.');
+      throw new Error('Unable to get app name from package.json, deno.json or app.json, and it was not provided.');
     }
     if (this.version === '') {
-      throw new Error('Unable to app version from package.json or deno.json, and it was not provided.');
+      throw new Error('Unable to get app version from package.json, deno.json or app.json, and it was not provided.');
     }
     debug('App created with name %s and version %s', this.name, this.version);
   }

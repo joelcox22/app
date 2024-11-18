@@ -1,12 +1,13 @@
-#!/usr/bin/env -S deno run --allow-all
-
 import { Command } from 'commander';
 import { prep } from './prep.ts';
+import { build } from './build.ts';
+import { deploy } from './deploy.ts';
 import { start } from './start.ts';
 
-const program = new Command('app');
+export const program = new Command('app');
 
 program.addCommand(prep);
+program.addCommand(build);
+program.addCommand(deploy);
 program.addCommand(start);
 
-await program.parseAsync();
